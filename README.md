@@ -4,13 +4,13 @@ A simple function to compare the analytical implementation of a gradient with th
 
 ### Installation
 
-```julia-repl
+```julia
 julia> ] add https://github.com/m3g/TestGradient.jl
 ```
 
 ### Examples
 
-```julia-repl
+```julia
 julia> using TestGradient
 
 julia> f(x) = sum(x.^2)
