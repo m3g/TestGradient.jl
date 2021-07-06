@@ -117,10 +117,14 @@ function test_gradient(f::Function,g!::Function,x::AbstractVector{T}) where T<:R
     step = 1.e-2
     while error > 1.e-6 && step >= 1.e-20
       gcomp = discret(i,x,step,f)
-      if min(abs(g[i]),abs(gcomp)) > 1.e-10
-        steperror = abs( ( gcomp - g[i] ) / g[i] )
+      if g[i] ≈ 0.  
+        if !(gcomp ≈ g[i])
+          steperror = +Inf
+        else
+          steperror = 0.
+        end
       else
-        steperror = abs( gcomp - g[i] )
+        steperror = abs( ( gcomp - g[i] ) / g[i] )
       end
       if steperror < error
         error = steperror
