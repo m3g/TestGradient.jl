@@ -45,7 +45,7 @@ Component   Analytical     Discrete        Error    Best_Step
 If the variables are vectors of something different than numbers, a method tries to reshape the array to to a vector of numbers. This is particularly useful for vectors of static arrays:
 
 
-```julia-repl
+```julia
 julia> using TestGradient 
 
 julia> x = rand(SVector{2,Float64},10);
