@@ -109,20 +109,17 @@ function test_gradient(f::Function,g!::Function,x::AbstractVector{T}) where T<:R
   eworst = 0.
   iworst = 1
   for i in 1:n
-    local gbest, stepbest, error
+    step = 1.e-2
+    stepbest = step
+    error = +Inf
+    gbest = 0.
     if mod(time() - t0,10) == 0
       println("Computing the $(i)th of $n components. Worst error: $eworst")
     end
-    error = +Inf
-    step = 1.e-2
     while error > 1.e-6 && step >= 1.e-20
-      gcomp = discret(i,x,step,f)
+      gcomp = discret(i,x,max(abs(g[i]*step),1e-20),f)
       if g[i] ≈ 0.  
-        if !(gcomp ≈ g[i])
-          steperror = +Inf
-        else
-          steperror = 0.
-        end
+        steperror = abs(gcomp - g[i])
       else
         steperror = abs( ( gcomp - g[i] ) / g[i] )
       end
