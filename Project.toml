@@ -1,7 +1,7 @@
 name = "TestGradient"
 uuid = "378f52c3-276f-4161-a15b-8e65c2e5aa55"
 authors = ["Leandro Martinez <leandro@iqm.unicamp.br> and contributors"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
